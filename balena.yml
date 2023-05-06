@@ -1,0 +1,23 @@
+name: datadog-iot
+type: sw.block
+description: >-
+  Datadog agent optimized for monitoring IoT devices and embedded applications.
+assets:
+  repository:
+    type: blob.asset
+    data:
+      url: 'https://github.com/balena-io-experimental/datadog-iot-block'
+  logo:
+    type: blob.asset
+    data:
+      url: >-
+        https://raw.githubusercontent.com/balena-io-experimental/datadog-iot-block/master/logo.png
+data:
+  defaultDeviceType: raspberrypi4-64
+  supportedDeviceTypes:
+    - raspberrypi4-64
+    - fincm3
+    - raspberrypi3
+    - genericx86-64-ext
+    - intel-nuc
+version: 0.0.1

@@ -1,0 +1,23 @@
+FROM balenalib/%%BALENA_ARCH%%-ubuntu
+WORKDIR /usr/app
+
+# See https://docs.datadoghq.com/agent/iot
+RUN sudo apt-get update && apt-get install -y conntrack nano wget curl sudo apt-transport-https gnupg2 net-tools
+RUN sudo sh -c "echo 'deb [signed-by=/usr/share/keyrings/datadog-archive-keyring.gpg] \
+    https://apt.datadoghq.com/ stable 7' > /etc/apt/sources.list.d/datadog.list"
+RUN sudo touch /usr/share/keyrings/datadog-archive-keyring.gpg
+RUN curl https://keys.datadoghq.com/DATADOG_APT_KEY_CURRENT.public | \
+    sudo gpg --no-default-keyring --keyring /usr/share/keyrings/datadog-archive-keyring.gpg --import --batch
+RUN curl https://keys.datadoghq.com/DATADOG_APT_KEY_382E94DE.public | \
+    sudo gpg --no-default-keyring --keyring /usr/share/keyrings/datadog-archive-keyring.gpg --import --batch
+RUN curl https://keys.datadoghq.com/DATADOG_APT_KEY_F14F620E.public | \
+    sudo gpg --no-default-keyring --keyring /usr/share/keyrings/datadog-archive-keyring.gpg --import --batch
+RUN sudo apt-get update && apt-get install datadog-iot-agent datadog-signing-keys
+
+COPY files /usr/app/files
+
+RUN cp /usr/app/files/disk.yaml /etc/datadog-agent/conf.d/disk.d/conf.yaml.default
+RUN cp /usr/app/files/network.yaml /etc/datadog-agent/conf.d/network.d/conf.yaml.default
+
+RUN chmod +x files/start.sh
+CMD ["bash","./files/start.sh"]

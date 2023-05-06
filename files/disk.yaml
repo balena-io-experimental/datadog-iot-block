@@ -1,0 +1,5 @@
+init_config:
+
+instances:
+  - use_mount: false
+    excluded_mountpoint_re: '/etc/balena-supervisor|/etc/docker|/etc/fake-hwclock|/etc/NetworkManager/system-connections|/etc/NetworkManager/conf.d|/etc/openvpn|/etc/ssh/hostkeys|/home/root/.docker|/home/root/.rnd|/home/root/.ssh|/mnt/data|/mnt/boot|/mnt/state|/mnt/sysroot/active|/mnt/sysroot/inactive|/resin-data|/sys/fs/cgroup/unified|/usr/share/ca-certificates/balena|/var/lib/bluetooth|/var/lib/chrony|/var/lib/docker|/var/lib/NetworkManager|/var/volatile|/var/volatile/lib/chrony|/var/volatile/lib/docker|/var/volatile/lib/NetworkManager|/var/volatile/lib/bluetooth|/var/volatile/lib/systemd'
