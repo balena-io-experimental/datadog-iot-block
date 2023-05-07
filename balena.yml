@@ -6,9 +6,12 @@ post-provisioning: >-
   Datadog's [IoT Agent](https://docs.datadoghq.com/agent/iot) for device monitoring.
 
   ## Getting Started
+
   1. Create an account at [Datadog](https://www.datadoghq.com) to generate an API key
-  1. Create a 'datadog-iot' service entry in your docker-compose, like [this example](https://github.com/balena-io-experimental/datadog-iot-block/blob/master/docker-compose.yml)
-  1. Set the generated API key as the value of a 'DD_API_KEY' [variable](https://docs.balena.io/learn/manage/variables/) for your fleet
+
+  2. Create a 'datadog-iot' service entry in your docker-compose, like [this example](https://github.com/balena-io-experimental/datadog-iot-block/blob/master/docker-compose.yml)
+
+  3. Set the generated API key as the value of a 'DD_API_KEY' [variable](https://docs.balena.io/learn/manage/variables/) for your fleet
 assets:
   repository:
     type: blob.asset
@@ -27,4 +30,4 @@ data:
     - raspberrypi3
     - genericx86-64-ext
     - intel-nuc
-version: 0.0.2
+version: 0.0.3
