@@ -1,0 +1,13 @@
+version: '2.1'
+services:
+  datadog-iot:
+    # Contains a Dockerfile.template to support multiple architectures
+    build: ./datadog
+    privileged: true
+    restart: always
+    network_mode: host
+    pid: host
+    labels:
+      io.balena.features.dbus: '1'
+      io.balena.features.balena-socket: '1'
+  # other services
